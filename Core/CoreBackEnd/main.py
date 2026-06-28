@@ -6,14 +6,14 @@ from app.routes import (
 )
 
 app = FastAPI(
-    title="Core Financiero — Banco Andino",
+    title="Core Financiero — Mi Banco",
     description="Motor de scoring, cartera crediticia y KPIs institucionales",
     version="1.0.0"
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # React Vite frontend
+    allow_origins=["http://localhost:5173", "https://mi-banco-blue.vercel.app"],  # React Vite frontend
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -30,7 +30,7 @@ app.include_router(rtr_recuperaciones.router, prefix="/recuperaciones", tags=["R
 
 @app.get("/")
 def root():
-    return {"sistema": "Core Financiero Banco Andino", "version": "1.0.0", "status": "ok"}
+    return {"sistema": "Core Mi Banco", "version": "1.0.0", "status": "ok"}
 
 
 
