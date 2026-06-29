@@ -21,9 +21,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://homebanking-fonrt-mibanco.vercel.app",
-        "https://homebanking-front-mibanco-git-main-mi-banco-front.vercel.app",
-        "http://localhost:5173",  # Por si acaso el puerto estándar
+        "https://homebanking-fonrt-mibanco.vercel.app/",
         "http://localhost:5174",  # ¡Tu frontend local de Vite actual!
     ],
     allow_credentials=True,
