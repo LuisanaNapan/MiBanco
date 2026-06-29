@@ -13,10 +13,11 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",                  # Permiso para tu PC local
-        "https://mi-banco-blue.vercel.app"        # ¡El permiso para tu página de Vercel!
-    ],  
+    allow_origins=["*"],
+    #allow_origins=[
+        #"http://localhost:5173",                  # Permiso para tu PC local
+        #"https://mi-banco-blue.vercel.app"        # ¡El permiso para tu página de Vercel!
+    #],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
