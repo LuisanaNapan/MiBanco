@@ -271,10 +271,20 @@ def generar_cronograma(db: Session, codsolicitud: str) -> dict:
 
     monto = float(sol.montoaprobadocredito or sol.montosolicitudcredito or 0)
     plazo = int(sol.plazosolicitudcredito or sol.nrocuotasolicitud or 12)
-    tea = ctl_scoring.TEA_POR_TIPO.get(
-        (sol.codtiposolicitud or "CO"), {"mid": 40.0}
-    )["mid"]
-    tem = (1 + tea / 100) ** (1 / 12) - 1
+    #tea = ctl_scoring.TEA_POR_TIPO.get(
+        #(sol.codtiposolicitud or "CO"), {"mid": 40.0}
+    #)["mid"]
+    #tem = (1 + tea / 100) ** (1 / 12) - 1
+    #cuota = monto * tem * (1 + tem) ** plazo / ((1 + tem) ** plazo - 1) if tem > 0 else monto / plazo
+    
+    # === AJUSTE CORREGIDO MI BANCO (TASA MENSUAL DIRECTA) ===
+    # El simulador oficial usa una Tasa Efectiva Mensual (TEM) fija de 4.67%
+    tem = 4.67 / 100  # Convertimos a decimal (0.0467)
+    
+    # Asignamos una TEA referencial solo para mostrar en el JSON informativo (72.93%)
+    tea = 72.93  
+
+    # Se calcula la cuota constante con el Sistema Frances Puro
     cuota = monto * tem * (1 + tem) ** plazo / ((1 + tem) ** plazo - 1) if tem > 0 else monto / plazo
 
     saldo = monto

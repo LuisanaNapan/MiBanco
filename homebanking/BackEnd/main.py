@@ -22,7 +22,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://homebanking-fonrt-mibanco.vercel.app",
-        "http://localhost:5174",  # ¡Tu frontend local de Vite actual!
+        "http://localhost:5174",  # Tu frontend local de Vite actual!
     ],
     allow_credentials=True,
     allow_methods=["*"],
