@@ -20,7 +20,10 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://homebanking-front-mibanco.vercel.app"],  # ¡Solo tu front tiene el pase VIP! 🔐
+    allow_origins=[
+        "https://homebanking-fonrt-mibanco.vercel.app",
+        "https://homebanking-front-mibanco-git-main-mi-banco-front.vercel.app"
+    ],  # Ponemos las dos URLs explícitas aquí para asegurar el tiro
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
