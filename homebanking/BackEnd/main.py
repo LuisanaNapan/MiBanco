@@ -12,15 +12,15 @@ from app.core.cfg_config import settings
 from app.routes import route_auth, route_creditos, route_cuentas, route_operaciones
 
 app = FastAPI(
-    title="Banca Internet Banco Andino — Homebanking API",
-    description="Portal del cliente de Banca Internet Banco Andino. Solo consultas y "
+    title="Banca Internet Mi Banco — Homebanking API",
+    description="Portal del cliente de Banca Internet Mi Banco. Solo consultas y "
     "operaciones del cliente del portal (dcliente / usuarios_homebanking).",
     version="1.0.0",
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origins_list,
+    allow_origins=["https://homebanking-front-mibanco.vercel.app"],  # ¡Solo tu front tiene el pase VIP! 🔐
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
